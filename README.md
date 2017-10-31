@@ -2,6 +2,7 @@
 1. [Introduction: Political Fundraising](RAEDME.md#objective)
 2. [Challenge Summary](README.md#challenge-summary)
 3. [Details of the challenge](README.md#input-data)
+4. [Approach towards solution](README.md#solution)
 
 
 ### Introduction
@@ -27,4 +28,8 @@ We are primarily interested with
 3. $ amount contributed ( TRANSACTION-AMT )
 4. date of transaction ( TRANSACTION-DT )
 5. recipient ID  ( CMTE-ID )
+
+### Approach towards solution
+
+Initially I splitted each line entry into parts so that IDs, zip codes, transaction, date can be pulled conveniently as per the requirement of the challenge.
 
