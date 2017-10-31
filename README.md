@@ -31,6 +31,9 @@ We are primarily interested with
 
 ### Approach towards solution
 
+For this work I picked "itoth.txt" from link: http://classic.fec.gov/finance/disclosure/ftpdet.shtml#a2017_2018
+This input exceeds the 25MB limit so I pasted first few lines in /input/.
+
 Initially I splitted each line entry into parts so that IDs, zip codes, transaction, date can be pulled conveniently as per the requirement of the challenge.
 
 In step 02, from each splitted line since the date MM/DD/YYYY, transaction dollar and other-ID whether it exists or empty appears 
