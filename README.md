@@ -34,5 +34,8 @@ We are primarily interested with
 Initially I splitted each line entry into parts so that IDs, zip codes, transaction, date can be pulled conveniently as per the requirement of the challenge.
 
 In step 02, from each splitted line since the date MM/DD/YYYY, transaction dollar and other-ID whether it exists or empty appears 
-in successive order, so at this stage an "INDEX" was introduced to filter data for which OTHER-ID is "empty" as required.
+in successive order, so at this stage an "INDEX[]" was introduced to filter data for which OTHER-ID is "empty" as required. Here the date 
+"DATE[]" and "DOLLAR[]" are listed for which OTHER-ID is empty. At this stage I also made sure taht YYYY of date is 2017-> (7) and 2016 -> (6) has been set as filtering condition in the code.
+
+In step 03, an additional input file states.txt which is basically an alphabatical list of US states is introduced to facilitate listing of zip codes since zip codes appears right after states such as NY 20003. since zip code appears as 5 or 9 digit though many other split entry of each line is 5 or 9 digit, hence additional states.txt was introduced. 
 
