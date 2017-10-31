@@ -10,6 +10,7 @@ import re
 input=open('../input/itoth.txt','r')
 
 NOL=8054  #  185495 
+# NOL is varying input condition for quick test
 
 SPLINPUT=[]  # splitted input
 
