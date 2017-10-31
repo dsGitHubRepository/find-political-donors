@@ -39,3 +39,5 @@ in successive order, so at this stage an "INDEX[]" was introduced to filter data
 
 In step 03, an additional input file states.txt which is basically an alphabatical list of US states "USSTATES[]" is introduced to facilitate listing of zip codes since zip codes appears right after states such as NY 20003. since zip code appears as 5 or 9 digit though many other split entry of each line is 5 or 9 digit, hence additional states.txt was introduced. 
 
+Here I have listed the valid zip code "ZIP-CODE[]" corresponding ids "ID[]" and an index that corresponds to valid zip code list eventually be used to list the corresponding dolalr contribution "DOLLARRBZ[]" and date "DATERBZ[]"
+
