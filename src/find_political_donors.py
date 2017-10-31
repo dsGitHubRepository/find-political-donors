@@ -121,13 +121,19 @@ print "\n size of DATERBZ ", np.size(DATERBZ) #  49,384 for NOL=185495
 print "\n \n", " step 04: finalize lists are ID, ZIP_CODE, DOLLARRBZ"
 
 
+print "\n \n", " step 05: get the rolling sum of  DOLLARRBZ"
+    
+DOLLARRBZ=list(map(int, DOLLARRBZ))
+DOLLARRBZnpna=np.array(DOLLARRBZ)
 
-output1=open('../output/medianvals_by_zip_v1.txt','w')
-for i in range(0, np.size(ID)):
+DRS=DOLLARRBZnpna[:-1].cumsum()   # dollar rolling sum
+
+output1=open('../output/medianvals_by_zip.txt','w')
+for i in range(0, np.size(ID)-1):
     ido=ID[i]   # id for output
     zipo=ZIP_CODE[i]
     dcono=DOLLARRBZ[i]  # dollar contribution output
-    output1.write('%s%s%s%s%s\n' % (ido,"|",zipo,"|",dcono) )
+    dcsi=DRS[i] # dolalr cumulative sum item
+    output1.write('%s%s%s%s%s%s%s\n' % (ido,"|",zipo,"|",dcono,"|",dcsi) )
     
 output1.close
-    
