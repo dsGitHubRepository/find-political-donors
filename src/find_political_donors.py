@@ -1,5 +1,7 @@
 # find_political_donors.py
 
+# find_political_donors_final_v2.py
+
 import numpy as np
 import re
 
@@ -7,7 +9,7 @@ import re
 
 input=open('../input/itoth.txt','r')
 
-NOL=854  #  185495 
+NOL=8054  #  185495 
 
 SPLINPUT=[]  # splitted input
 
@@ -121,19 +123,51 @@ print "\n size of DATERBZ ", np.size(DATERBZ) #  49,384 for NOL=185495
 print "\n \n", " step 04: finalize lists are ID, ZIP_CODE, DOLLARRBZ"
 
 
-print "\n \n", " step 05: get the rolling sum of  DOLLARRBZ"
+print "\n \n", " step 05: get the rolling sum of dollar contribution"
     
 DOLLARRBZ=list(map(int, DOLLARRBZ))
 DOLLARRBZnpna=np.array(DOLLARRBZ)
 
-DRS=DOLLARRBZnpna[:-1].cumsum()   # dollar rolling sum
+ZIP_CODEint = list(map(int, ZIP_CODE)) # type(ZIP_CODEint)=> list; type(ZIP_CODEint[3])=> int
+ZIP_CODEnpna=np.array(ZIP_CODEint)  
 
-output1=open('../output/medianvals_by_zip.txt','w')
-for i in range(0, np.size(ID)-1):
-    ido=ID[i]   # id for output
-    zipo=ZIP_CODE[i]
-    dcono=DOLLARRBZ[i]  # dollar contribution output
-    dcsi=DRS[i] # dolalr cumulative sum item
-    output1.write('%s%s%s%s%s%s%s\n' % (ido,"|",zipo,"|",dcono,"|",dcsi) )
+print "\n \n", " step 06: finalize lists are ID, ZIP_CODEnpna, DOLLARRBZnpna"
+
+
+ZIP_RS=[]  # zip for rolling sum
+IDXZ_RS=[] # zip index for rolling sum
+for i in range(0,10):
+    itemcs=ZIP_CODEint[i]
+    itemcsindex=np.where(ZIP_CODEnpna == itemcs)[0]
+    ZIP_RS.append(itemcs)
+    IDXZ_RS.append(itemcsindex)
+    #print "itemcs", itemcs, ",","itemcsindex", itemcsindex
     
-output1.close
+
+#print "\n size of ZIP_RS ", np.size(ZIP_RS)
+
+#print "\n size of IDXZ_RS ", np.size(IDXZ_RS)
+
+print "\n \n", " final step: write output file"
+
+output=open('../output/medianvals_by_zip.txt','w')
+for i in range(0,np.size(ZIP_RS)):
+    zprs=ZIP_RS[i]  # zip rolling sum
+    idxrs=IDXZ_RS[i]  # idx rolling sum
+    dcCS=[] # dolalr contribution for cum sum
+    IDfrs=[] # ids for rolling sum
+    for j in range(0, np.size(idxrs)):
+        drsz=DOLLARRBZ[idxrs[j]] # dollar rolling sum zip
+        cidfcs=ID[idxrs[j]]  # corresponding id for rolling sum
+        dcCS.append(drsz)
+        IDfrs.append(cidfcs)
+    dcCS=list(map(int, dcCS))
+    dcCSnpna=np.array(dcCS)  # numpy nd array for dolalr contribution for cum sum
+    RSDC=dcCSnpna[:-1].cumsum() # rolling sum for dollar contribution
+    for k in range(0,np.size(RSDC)):
+        dCS=RSDC[k]  # dollar rolling sum
+        dFL=dcCS[k]  # dollar from List
+        idwao=IDfrs[k] # id to write as output
+        output.write('%s%s%s%s%s%s%s\n' % (idwao,"|",zprs,"|",dFL,"|",dCS) )
+
+output.close()
