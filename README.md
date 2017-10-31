@@ -33,3 +33,6 @@ We are primarily interested with
 
 Initially I splitted each line entry into parts so that IDs, zip codes, transaction, date can be pulled conveniently as per the requirement of the challenge.
 
+In step 02, from each splitted line since the date MM/DD/YYYY, transaction dollar and other-ID whether it exists or empty appears 
+in successive order, so at this stage an "INDEX" was introduced to filter data for which OTHER-ID is "empty" as required.
+
