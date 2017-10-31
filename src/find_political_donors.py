@@ -1,7 +1,5 @@
 # find_political_donors.py
 
-# find_political_donors_final_v2.py
-
 import numpy as np
 import re
 
