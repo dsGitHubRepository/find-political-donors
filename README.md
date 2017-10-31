@@ -41,3 +41,11 @@ In step 03, an additional input file states.txt which is basically an alphabatic
 
 Here I have listed the valid zip code "ZIP-CODE[]" corresponding ids "ID[]" and an index that corresponds to valid zip code list eventually be used to list the corresponding dolalr contribution "DOLLARRBZ[]" and date "DATERBZ[]"
 
+From zip code list identical zip codes sorted along with their indices and those indices been used to produce output file to get the rolling sum of dollar contribution. Remaining part of the code can be done the same way but indices for indentical date be sorted first and the procedure as this one.
+
+
+
+
+
+
+
